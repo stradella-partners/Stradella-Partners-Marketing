@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stradella Partners · Hybrid Engine v1.1</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Stradella Partners · Hybrid Engine v1.1 · a fully systematic intraday S&amp;P 500 strategy. Password-protected preview.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<style>
+/* ============================================================
+   Stradella Partners · Hybrid Engine v1.1
+   Single self-contained file. All CSS/JS inline.
+   No browser storage APIs used. No credentials.
+   ============================================================ */
+
+:root{
+  --ground:#121110;
+  --paper:#f3f2f2;
+  --body:rgba(243,242,242,.62);
+  --label:rgba(243,242,242,.5);
+  --foot:rgba(243,242,242,.4);
+  --foot2:rgba(243,242,242,.45);
+  --disclosure:rgba(243,242,242,.38);
+  --accent:#2f6bff;
+  --accent-light:#7fa2ff;
+  --accent-hover:#4d82ff;
+  --accent-active:#6f96ff;
+  --blue-tint:rgba(47,107,255,.12);
+  --blue-border:rgba(127,162,255,.45);
+  --rule-strong:rgba(243,242,242,.85);
+  --rule-med:rgba(243,242,242,.2);
+  --rule-med2:rgba(243,242,242,.25);
+  --hair:rgba(243,242,242,.16);
+  --row:rgba(243,242,242,.1);
+  --row2:rgba(243,242,242,.12);
+  --font:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pad-x:64px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  overflow-x:hidden;
+  background:var(--ground);
+  color:var(--paper);
+  font-family:var(--font);
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+img,svg{border-radius:0}
+a{color:var(--accent-light);text-decoration:none}
+a:hover{color:#a9c1ff}
+::selection{background:rgba(47,107,255,.35)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+h1,h2,h3,p,figure,dl,dd{margin:0}
+
+/* Tabular numerals everywhere numbers appear */
+.num,.fig,.stat-val,.cell-val,.tbl,.tbl *,table,table *,
+svg text,.tag,.gridline-label,.chart-label,.date-row span,
+.ledger,.ledger *,.substat-val,.headline-val,.hero-note{
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+
+/* ---------- shared primitives ---------- */
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad-x)}
+section{max-width:1440px;margin:0 auto;padding:96px var(--pad-x) 0;scroll-margin-top:80px}
+
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.micro{
+  font-size:10px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--label);
+}
+.kicker{
+  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.colhead{
+  font-size:9.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--label);
+}
+.foot{font-size:10.5px;line-height:1.6;color:var(--foot)}
+.foot2{font-size:11px;line-height:1.6;color:var(--foot2)}
+.hi{color:var(--paper);font-weight:600}
+.it{font-style:italic}
+
+/* Section rail: 2px rule + label left, outlined tag right */
+.rail{
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-top:2px solid var(--rule-strong);
+  padding-top:18px;margin-bottom:36px;gap:16px;flex-wrap:wrap;
+}
+.rail--tight{margin-bottom:10px}
+.tag{
+  font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--label);border:1px solid var(--rule-med2);padding:5px 10px;
+}
+.tag--blue{color:var(--accent-light);border-color:var(--blue-border)}
+
+/* Buttons: flush-left label, trailing arrow */
+.btn{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:24px;
+  min-width:250px;padding:16px 20px;
+  font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;border:1px solid transparent;
+  transition:background-color .12s linear,border-color .12s linear,color .12s linear;
+}
+.btn svg{flex:none}
+.btn--primary{background:var(--accent);color:#fff}
+.btn--primary:hover{background:var(--accent-hover);color:#fff}
+.btn--primary:active{background:var(--accent-active)}
+.btn--ghost{border:1px solid rgba(243,242,242,.4);color:var(--paper)}
+.btn--ghost:hover{border-color:var(--paper);background:rgba(243,242,242,.06);color:var(--paper)}
+.btn--ghost:active{background:rgba(243,242,242,.12)}
+
+/* ---------- preview ribbon ---------- */
+#ribbon{
+  display:flex;align-items:center;justify-content:center;
+  padding:7px var(--pad-x);
+  border-bottom:1px solid rgba(243,242,242,.14);
+}
+#ribbon span{
+  font-size:10px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--foot2);text-align:center;
+}
+#ribbon[hidden]{display:none}
+
+/* ---------- sticky nav ---------- */
+#stnav{
+  position:sticky;top:0;z-index:50;
+  background:var(--ground);border-bottom:1px solid var(--rule-med2);
+}
+.nav-inner{
+  max-width:1440px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad-x);height:66px;
+}
+.brand{
+  font-weight:800;font-size:14px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--paper);text-decoration:none;
+}
+.brand:hover{color:var(--paper)}
+.nav-links{display:flex;gap:34px;align-items:baseline}
+.nav-links a{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(243,242,242,.6);text-decoration:none;
+}
+.nav-links a:hover{color:var(--accent-light)}
+.nav-links a.contact{color:var(--accent)}
+.nav-links a.contact:hover{color:var(--accent-light)}
+#navtoggle{display:none}
+
+/* ---------- hero ---------- */
+#top{padding-top:88px}
+.hero-eyebrow{color:var(--accent);margin-bottom:30px}
+h1{
+  font-weight:800;font-size:clamp(48px,5.8vw,84px);
+  line-height:.98;letter-spacing:-0.03em;text-wrap:pretty;
+}
+.hero-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;
+  margin-top:44px;align-items:end;
+}
+.hero-sub{font-size:18px;line-height:1.6;color:var(--body)}
+.hero-ctas{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap}
+
+/* Ruled stat strips (hero 5-tile, live 6-tile) */
+.strip{
+  display:flex;flex-wrap:wrap;
+  border-top:2px solid var(--rule-strong);
+  margin-top:56px;padding:24px 0 8px;
+}
+.strip .tile{flex:1;min-width:220px;padding:0 28px;margin-bottom:16px;border-left:1px solid var(--rule-med)}
+.strip .tile:first-child{padding-left:0;padding-right:28px;border-left:0}
+.strip .tile:last-child{padding-right:0}
+.tile-val{
+  display:flex;align-items:baseline;gap:10px;margin-top:8px;
+  font-weight:800;font-size:30px;
+}
+.tile-val b{font-weight:800}
+.tile-note{font-size:10px;font-weight:400;letter-spacing:normal;text-transform:none;color:var(--foot)}
+.val-blue{color:var(--accent-light)}
+
+/* ---------- strategy ---------- */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.two-col--start{align-items:start}
+.prose{font-size:15.5px;line-height:1.7;color:var(--body)}
+.prose + .prose{margin-top:18px}
+
+.numgrid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--rule-med);margin-top:48px;
+}
+.numgrid > div{padding:22px 24px 18px 24px;border-left:1px solid var(--hair)}
+.numgrid > div:nth-child(4n+1){padding-left:0;border-left:0}
+.numgrid > div:nth-child(4n){padding-right:0}
+.numgrid > div:nth-child(n+5){padding-top:18px;padding-bottom:4px;border-top:1px solid var(--hair)}
+.numgrid .fig{font-weight:800;font-size:26px;white-space:nowrap}
+.numgrid .cap{
+  font-size:10px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--label);margin-top:7px;
+}
+
+/* ---------- discipline ---------- */
+h2{
+  font-weight:800;font-size:clamp(30px,2.9vw,42px);
+  line-height:1.08;letter-spacing:-0.02em;text-wrap:pretty;
+}
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;margin-top:44px;
+}
+.card{
+  border:1px solid var(--hair);padding:22px 20px;
+  transition:border-color .12s linear;
+}
+.card:hover,.card:focus-within{border-color:rgba(127,162,255,.6)}
+.card-title{font-weight:800;font-size:15px;margin-top:14px}
+.card-sub{font-size:12px;line-height:1.55;color:var(--label);margin-top:8px}
+
+/* ---------- research ---------- */
+.poster-row{display:flex;flex-wrap:wrap;gap:0}
+.poster{
+  flex:1 1 360px;background:var(--accent);color:#fff;padding:40px 38px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:40px;
+}
+.poster-label{
+  font-size:10px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.7);
+}
+.poster-num{
+  font-weight:800;font-size:78px;line-height:.95;letter-spacing:-0.03em;
+}
+.poster-desc{font-size:13px;color:rgba(255,255,255,.8);margin-top:16px;max-width:300px;line-height:1.55}
+.substats{display:flex;gap:28px;border-top:1px solid rgba(255,255,255,.35);padding-top:18px;flex-wrap:wrap}
+.substat-label{
+  font-size:9.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.65);
+}
+.substat-val{font-weight:800;font-size:24px;margin-top:5px}
+
+.chartbox{
+  flex:2.2 1 560px;min-width:0;
+  border:1px solid var(--hair);padding:36px 40px 30px;
+}
+.chart-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;gap:16px;flex-wrap:wrap}
+.chart-range{font-size:11px;color:var(--foot2)}
+.plot{position:relative}
+.plot svg{display:block;width:100%;height:auto;cursor:crosshair;font-family:var(--font)}
+.tip{
+  position:absolute;transform:translate(-50%,-140%);
+  background:var(--paper);color:var(--ground);
+  padding:6px 11px;font-size:11.5px;font-weight:600;white-space:nowrap;
+  pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.4);
+  z-index:5;
+}
+.tip[hidden],.crosshair[hidden]{display:none}
+
+/* Accessible data tables paired with charts.
+   Visually hidden but exposed to assistive tech; must not
+   contribute scroll width (left:-9999px would widen the page). */
+/* Wrapper does the clipping so no table descendant
+   (incl. <caption>, which escapes containment) can widen the page. */
+.sr-wrap{
+  position:absolute;left:0;top:0;
+  width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);
+  margin:-1px;padding:0;border:0;
+}
+.sr-table{border-collapse:collapse;white-space:nowrap}
+.sr-table th{text-align:left}
+
+.headline-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  column-gap:24px;margin-top:14px;
+}
+.headline-grid > div{border-top:1px solid var(--rule-med);padding:13px 0 20px}
+.headline-val{font-weight:800;font-size:23px;margin-top:7px}
+.per-dollar{font-size:11px;color:var(--foot2)}
+
+.split{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));
+  gap:48px;margin-top:40px;align-items:start;
+}
+.blockhead{
+  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  border-top:2px solid var(--rule-strong);padding-top:16px;margin-bottom:14px;
+}
+.blockhead--gap{margin:36px 0 14px}
+
+.tbl{display:grid;grid-template-columns:92px 1fr 122px 112px;column-gap:10px}
+.tbl .th{padding:8px 0;border-bottom:1px solid var(--rule-med2)}
+.tbl .th.r{text-align:right}
+.tbl .td{padding:11px 0;font-size:13.5px;border-bottom:1px solid var(--row2)}
+.tbl .td.lbl{color:rgba(243,242,242,.55)}
+.tbl .td.pri{font-weight:600;text-align:right}
+.tbl .td.sec{font-size:12.5px;color:var(--label);text-align:right}
+.tbl .td.last{border-bottom:0}
+
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.mcard{border:1px solid var(--hair);padding:24px 22px;transition:border-color .12s linear}
+.mcard:hover{border-color:rgba(127,162,255,.6)}
+.mcard .idx{font-weight:800;font-size:12px;color:var(--accent)}
+.mcard .mt{font-weight:800;font-size:16px;margin-top:12px}
+.mcard .ms{font-size:12.5px;line-height:1.6;color:rgba(243,242,242,.55);margin-top:9px}
+
+/* ---------- live ---------- */
+.asof{font-size:11px;color:var(--foot2);margin-bottom:32px}
+.lead{font-size:15.5px;line-height:1.7;color:var(--body);max-width:880px}
+.strip--live{margin-top:36px}
+.strip--live .tile{min-width:150px;padding:0 26px}
+.strip--live .tile:first-child{padding-left:0;padding-right:26px}
+.strip--live .tile:last-child{padding-right:0}
+.stat-val{display:block;font-weight:800;font-size:34px;margin-top:8px;white-space:nowrap}
+.stat-note{display:block;font-size:10px;color:var(--foot);margin-top:6px}
+
+.livebox{border:1px solid var(--hair);padding:26px 30px 20px;margin-top:24px}
+.date-row{display:flex;justify-content:space-between;margin-top:6px;padding-right:5.5%;gap:4px;flex-wrap:nowrap;overflow:hidden}
+.date-row span{font-size:9.5px;color:var(--foot);white-space:nowrap}
+
+.live-split{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;margin-top:44px;align-items:start}
+/* grid/flex children default to min-width:auto, which lets the
+   640px-wide ledger blow out its track; min-width:0 keeps the
+   overflow inside .ledger-scroll where it belongs */
+.live-split > *{min-width:0}
+.ledger-scroll{max-width:100%}
+.ledger-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-top:2px solid var(--rule-strong);padding-top:16px;margin-bottom:6px;gap:16px;flex-wrap:wrap;
+}
+.ledger-scroll{max-height:480px;overflow:auto}
+.ledger{display:grid;grid-template-columns:88px 78px 92px 1fr 1fr 118px;column-gap:18px;min-width:640px}
+.ledger .th{
+  padding:10px 0;border-bottom:1px solid var(--rule-med2);
+  position:sticky;top:0;background:var(--ground);z-index:2;
+}
+.ledger .th.r{text-align:right}
+.ledger .td{padding:12px 0;font-size:13.5px;border-bottom:1px solid var(--row);color:rgba(243,242,242,.85)}
+.ledger .td.r{text-align:right}
+.ledger .td.gross{color:rgba(243,242,242,.6);text-align:right}
+.ledger .td.pnl{font-weight:600;text-align:right}
+.side-tag{
+  display:inline-block;
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--rule-med2);padding:3px 8px;
+}
+
+.honesty{border:1px solid rgba(127,162,255,.4);border-top:3px solid var(--accent);padding:26px 26px 24px}
+.honesty-h{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-light)}
+.honesty p{font-size:13.5px;line-height:1.7;color:rgba(243,242,242,.75);margin:16px 0 0}
+.honesty p + p{margin-top:12px}
+
+/* ---------- footer ---------- */
+#contact{padding-bottom:96px}
+.foot-rail{
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-top:2px solid var(--rule-strong);padding-top:20px;gap:16px;flex-wrap:wrap;
+}
+.foot-brand{font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.foot-meta{font-size:11px;color:var(--foot2)}
+.disclosure{
+  font-size:10.5px;line-height:1.7;color:var(--disclosure);
+  margin-top:20px;max-width:1100px;
+}
+
+/* ============================================================
+   RESPONSIVE · true breakpoints.
+   Structure: keep the ruled grid, never center text.
+   ============================================================ */
+
+@media (max-width:1180px){
+  :root{--pad-x:48px}
+  .nav-links{gap:24px}
+  .hero-row{gap:44px}
+  .two-col{gap:44px}
+  .live-split{grid-template-columns:1fr;gap:36px}
+}
+
+@media (max-width:1000px){
+  section{padding-top:80px}
+  .hero-row{grid-template-columns:1fr;gap:32px;align-items:start}
+  .hero-ctas{justify-content:flex-start}
+  .btn{min-width:230px}
+  .two-col{grid-template-columns:1fr;gap:28px}
+  .numgrid{grid-template-columns:repeat(2,1fr)}
+  .numgrid > div{padding:20px 20px 16px 20px;border-left:1px solid var(--hair)}
+  .numgrid > div:nth-child(4n+1){padding-left:20px;border-left:1px solid var(--hair)}
+  .numgrid > div:nth-child(4n){padding-right:20px}
+  .numgrid > div:nth-child(2n+1){padding-left:0;border-left:0}
+  .numgrid > div:nth-child(2n){padding-right:0}
+  .numgrid > div:nth-child(n+3){padding-top:18px;border-top:1px solid var(--hair)}
+  .chartbox{padding:28px 24px 24px}
+  .poster{padding:32px 28px}
+  .poster-num{font-size:64px}
+}
+
+@media (max-width:820px){
+  :root{--pad-x:32px}
+
+  /* Nav collapses to a single scrollable rule-lined row */
+  .nav-inner{height:auto;padding:0;flex-direction:column;align-items:stretch}
+  .nav-inner .brand{padding:16px var(--pad-x) 12px}
+  .nav-links{
+    gap:0;padding:0 var(--pad-x);
+    border-top:1px solid var(--hair);
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    /* own scroll context: the link row may scroll, the page may not */
+    max-width:100%;
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{
+    padding:12px 0;margin-right:22px;white-space:nowrap;flex:none;
+  }
+  /* trailing spacer keeps the last link clear of the edge
+     without adding scroll width to the page itself */
+  .nav-links a:last-child{margin-right:0;padding-right:var(--pad-x)}
+  section{scroll-margin-top:112px}
+
+  /* Tiles stack into full-width ruled rows */
+  .strip{padding-top:20px}
+  .strip .tile,
+  .strip--live .tile{
+    flex:1 1 100%;min-width:0;
+    padding:16px 0 0 0;border-left:0;
+    border-top:1px solid var(--rule-med);margin-bottom:0;
+  }
+  .strip .tile:first-child,
+  .strip--live .tile:first-child{padding:0 0 16px 0;border-top:0}
+  .strip .tile:not(:first-child){padding-bottom:16px}
+  .tile-val{font-size:26px;flex-wrap:wrap;gap:6px}
+  .stat-val{font-size:28px}
+
+  .split{grid-template-columns:1fr;gap:36px}
+  .headline-grid{grid-template-columns:repeat(2,1fr);column-gap:18px}
+  .method{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .livebox{padding:20px 18px 16px}
+  .honesty{padding:22px 20px 20px}
+  .tbl{grid-template-columns:78px 1fr 96px 84px;column-gap:8px}
+  .tbl .td{font-size:12.5px}
+  .tbl .td.sec{font-size:11.5px}
+}
+
+@media (max-width:560px){
+  :root{--pad-x:20px}
+  body{font-size:14.5px}
+  section{padding-top:64px}
+  h1{font-size:clamp(34px,9vw,48px);letter-spacing:-0.02em}
+  h2{font-size:clamp(24px,6.4vw,30px)}
+  .hero-sub{font-size:16px}
+  .prose,.lead{font-size:15px}
+  .btn{min-width:0;width:100%;font-size:12px;padding:14px 16px;gap:16px}
+  .hero-ctas{width:100%;gap:10px}
+  .poster{flex:1 1 100%;padding:26px 20px;gap:28px}
+  .poster-num{font-size:52px}
+  .substats{gap:18px}
+  .substat-val{font-size:20px}
+  .chartbox{flex:1 1 100%;padding:22px 18px 18px}
+  .headline-grid{grid-template-columns:1fr}
+  .headline-val{font-size:21px}
+  .numgrid{grid-template-columns:1fr}
+  .numgrid > div,
+  .numgrid > div:nth-child(4n+1),
+  .numgrid > div:nth-child(4n),
+  .numgrid > div:nth-child(2n+1),
+  .numgrid > div:nth-child(2n){
+    padding:16px 0 14px 0;border-left:0;border-top:1px solid var(--hair);
+  }
+  .numgrid > div:first-child{border-top:0;padding-top:18px}
+  .numgrid .fig{font-size:23px;white-space:normal}
+  .cards{grid-template-columns:1fr}
+  .tbl{grid-template-columns:1fr auto;column-gap:12px}
+  .tbl .th{display:none}
+  .tbl .td{border-bottom:0;padding:6px 0}
+  .tbl .td.lbl{padding-top:14px;font-weight:600;color:var(--paper)}
+  .tbl .td.win{grid-column:1;font-size:12px;color:var(--label);padding-bottom:12px;border-bottom:1px solid var(--row2)}
+  .tbl .td.pri{grid-column:2;grid-row:auto;padding-top:14px}
+  .tbl .td.sec{grid-column:2;padding-bottom:12px;border-bottom:1px solid var(--row2)}
+  .date-row{padding-right:0}
+  .date-row span:nth-child(even){display:none}
+  .rail{margin-bottom:28px}
+  .strip{margin-top:40px}
+}
+
+/* ============================================================
+   PRINT · dark ground to light paper, sensible page breaks.
+   ============================================================ */
+@media print{
+  @page{margin:14mm}
+
+  html{scroll-behavior:auto}
+  body{
+    background:#fff;color:#111;font-size:10.5pt;line-height:1.5;
+    print-color-adjust:exact;-webkit-print-color-adjust:exact;
+  }
+  :root{
+    --ground:#fff;--paper:#111;
+    --body:#333;--label:#555;--foot:#666;--foot2:#666;--disclosure:#666;
+    --rule-strong:#111;--rule-med:#bbb;--rule-med2:#aaa;--hair:#ccc;
+    --row:#ddd;--row2:#ddd;
+    --accent-light:#1746b8;
+    --pad-x:0px;
+  }
+
+  #ribbon{border-bottom:1px solid #bbb;justify-content:flex-start;padding:0 0 8pt}
+  #ribbon span{color:#555}
+  #stnav{position:static !important;border-bottom:1px solid #111;background:#fff}
+  .nav-inner{height:auto;padding:10pt 0}
+  .nav-links{display:none}
+  .brand{color:#111}
+
+  section{padding:18pt 0 0;max-width:none;break-inside:auto}
+  #strategy,#discipline,#research,#live,#contact{break-before:page}
+
+  h1{font-size:30pt;line-height:1.02}
+  h2{font-size:17pt}
+  .hero-row{grid-template-columns:1fr 1fr;gap:24pt;align-items:start}
+  .hero-ctas,.btn{display:none}
+  .hero-sub{font-size:11.5pt;color:#333}
+
+  .strip,.numgrid,.headline-grid,.cards,.method,.split,.live-split,
+  .poster-row,.chartbox,.livebox,.honesty,.card,.mcard,.tbl,.plot,
+  .ledger-scroll{break-inside:avoid}
+
+  .split{grid-template-columns:1fr 1fr;gap:24pt}
+  .live-split{grid-template-columns:1.5fr 1fr;gap:24pt}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .method{grid-template-columns:repeat(2,1fr)}
+
+  .poster{background:#2f6bff !important;color:#fff !important}
+  .poster .poster-label{color:rgba(255,255,255,.82)}
+  .poster .poster-desc{color:rgba(255,255,255,.9)}
+  .poster .substat-label{color:rgba(255,255,255,.8)}
+
+  .card,.mcard,.chartbox,.livebox{border-color:#bbb}
+  .honesty{border-color:#8aa6ee;border-top:3px solid #2f6bff}
+  .honesty p{color:#222}
+  .honesty-h{color:#1746b8}
+  .tag{color:#555;border-color:#aaa}
+  .tag--blue{color:#1746b8;border-color:#8aa6ee}
+
+  /* chart ink: dark strokes/labels read on white */
+  .plot svg line[stroke^="rgba(243"]{stroke:#c9c9c9}
+  .plot svg text[fill^="rgba(243"]{fill:#555}
+  .plot svg rect[fill^="rgba(243"]{fill:#eee}
+  svg text[fill="#f3f2f2"]{fill:#111}
+  svg text[fill="#7fa2ff"]{fill:#1746b8}
+  svg rect[fill^="rgba(243,242,242,.25)"]{fill:#ccc}
+
+  .crosshair,.tip{display:none !important}
+
+  /* chart data tables become visible in print (no hover available) */
+  .sr-wrap{
+    position:static;width:auto;height:auto;overflow:visible;
+    clip:auto;clip-path:none;margin:10pt 0 0;
+  }
+  .sr-table{font-size:8.5pt;break-inside:avoid}
+  .sr-table caption{
+    text-align:left;font-weight:600;font-size:8pt;
+    text-transform:uppercase;letter-spacing:.08em;color:#555;padding-bottom:4pt;
+  }
+  .sr-table th,.sr-table td{
+    border-bottom:1px solid #ddd;padding:3pt 12pt 3pt 0;text-align:left;
+  }
+  .ledger-scroll{max-height:none;overflow:visible}
+  .ledger .th{position:static;background:#fff}
+  .ledger .td{color:#222}
+  .ledger .td.gross{color:#555}
+  .date-row span:nth-child(even){display:inline}
+
+  .disclosure{color:#555;max-width:none;break-inside:avoid}
+  a{color:#111;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 · Preview ribbon -->
+<div id="ribbon" hidden>
+  <span>Password-protected preview · not for distribution</span>
+</div>
+
+<!-- 2 · Sticky nav -->
+<div id="stnav">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="#top">Stradella&nbsp;Partners</a>
+    <div class="nav-links">
+      <a href="#strategy">Strategy</a>
+      <a href="#discipline">Discipline</a>
+      <a href="#research">Research</a>
+      <a href="#live">Live</a>
+      <a class="contact" href="#contact">Contact</a>
+    </div>
+  </nav>
+</div>
+
+<main>
+
+<!-- 3 · Hero -->
+<section id="top" aria-label="Hero">
+  <div class="eyebrow hero-eyebrow">Stradella Partners · Hybrid Engine v1.1</div>
+  <h1>A disciplined machine for the market's most overlooked ninety minutes.</h1>
+  <div class="hero-row">
+    <p class="hero-sub">The Hybrid Engine is a fully systematic intraday strategy with no directional bias: long or short in the S&amp;P 500 based on the morning's signals, at most one trade per day, every position closed by 3:55&nbsp;PM, zero overnight exposure.</p>
+    <div class="hero-ctas">
+      <a class="btn btn--primary" href="#research">Read the research<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a class="btn btn--ghost" href="#live">See live performance<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="tile">
+      <span class="micro">5-Year Backtest</span>
+      <span class="tile-val"><b>+402%</b><span class="tile-note">on $100k capital at the live 4x sizing, net of costs (backtest)</span></span>
+    </div>
+    <div class="tile">
+      <span class="micro">Down Years</span>
+      <span class="tile-val"><b>Zero</b><span class="tile-note">2021–2026 backtest, all cost scenarios ≤0.05%</span></span>
+    </div>
+    <div class="tile">
+      <span class="micro">Live Paper · first <span data-live="days">29</span> days</span>
+      <span class="tile-val"><b class="val-blue" data-live="totalShort">+11.4%</b><span class="tile-note">on $100k capital base, 4x intraday margin</span></span>
+    </div>
+    <div class="tile">
+      <span class="micro">Overnight Exposure</span>
+      <span class="tile-val"><b>None</b><span class="tile-note">flat at every close, weekend-proof</span></span>
+    </div>
+    <div class="tile">
+      <span class="micro">Directional Bias</span>
+      <span class="tile-val"><b>None</b><span class="tile-note">long or short, chosen daily by signal</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · The Strategy -->
+<section id="strategy" aria-labelledby="strategy-h">
+  <div class="rail">
+    <span class="eyebrow" id="strategy-h">The Strategy</span>
+    <span class="tag">At most one trade per day</span>
+  </div>
+  <div class="two-col">
+    <div>
+      <p class="prose">Every trading day at 1:00 PM Eastern, the Hybrid Engine asks one question: has the market established a direction worth trading for the rest of the afternoon? Two independent signal systems answer it. The <span class="hi">LC engine</span> (lunch continuation) measures whether the morning's move <span class="it">continued or reversed through the lunch session</span>, a relative, ratio-based read. The <span class="hi">VW engine</span> (velocity window) measures <span class="it">absolute price velocity</span> across fixed midday windows, a magnitude-based read. Each engine evaluates four distinct signal paths (continuation and fade, early and late), and a simple arbitration rule picks at most <span class="hi">one trade per day</span>: when both engines agree on direction, the earlier entry wins; when they disagree, the velocity engine, the better direction-reader, takes precedence.</p>
+      <p class="prose">Signals enter between 1:45 and 2:45 PM in 3x leveraged S&amp;P 500 ETFs (SPXL long / SPXS short), and every position is closed by 3:55 PM. <span class="hi">No positions are ever held overnight or through a weekend.</span> Scheduled macro-event days (CPI, FOMC, non-farm payrolls) and half-day sessions are sat out by rule.</p>
+    </div>
+    <div>
+      <p class="prose">Position sizing is fixed and mechanical. Every trade deploys <span class="hi">four dollars of gross exposure for every dollar of capital</span>, 4x intraday margin, into 3x leveraged S&amp;P 500 ETFs, which means up to <span class="hi">12x instantaneous market exposure while in a position, and zero the moment the book is flat</span>. Exposure never compounds and is never discretionary: the same dollar size on every trade, win or lose, with the broker's margin used only intraday and no capital committed overnight.</p>
+      <p class="prose">The system trades <span class="hi">both directions</span> with near-symmetric results and sits out roughly <span class="hi">40–50%</span> of sessions entirely.</p>
+    </div>
+  </div>
+  <div class="numgrid">
+    <div><div class="fig">~120–140</div><div class="cap">Trades per year</div></div>
+    <div><div class="fig">~115 min</div><div class="cap">Median hold</div></div>
+    <div><div class="fig">~14%</div><div class="cap">Share of trading hours spent in the market</div></div>
+    <div><div class="fig">~55/45</div><div class="cap">Long / short mix</div></div>
+    <div><div class="fig">4x → 12x</div><div class="cap">Intraday margin → peak market exposure, via 3x ETFs</div></div>
+    <div><div class="fig">0x</div><div class="cap">Market exposure at every close and overnight</div></div>
+    <div><div class="fig">8 layers</div><div class="cap">Of signal logic, two engines</div></div>
+    <div><div class="fig">100%</div><div class="cap">Systematic, zero discretion</div></div>
+  </div>
+</section>
+
+<!-- 5 · Discipline -->
+<section id="discipline" aria-labelledby="discipline-h">
+  <div class="rail">
+    <span class="eyebrow" id="discipline-h">Discipline</span>
+    <span class="tag">Flat at every close</span>
+  </div>
+  <div class="two-col two-col--start">
+    <h2>Most trading-strategy risk lives overnight. The Hybrid Engine simply never holds it.</h2>
+    <div>
+      <p class="prose">Gaps, weekend headlines, halted opens: the book is flat at every close, so each day starts fresh.</p>
+      <p class="prose">Inside the trade, risk is bounded by engineering, not hope: a <span class="hi">hard stop on every position</span>, resting at the broker from the moment of entry (it executes even if our systems go dark), plus profit-protecting trailing stops, time-based profit tapers, a volatility-regime gate that stands the slower engine down in disorderly markets, and an independent end-of-day watchdog that force-flattens anything still open. In the five-year backtest <span class="hi">at the live sizing</span>, the worst single trade cost <span class="hi num">-5.2% of capital</span>, the worst month was <span class="hi num">-26% of capital</span> (-6.4% per dollar of exposure), and the maximum drawdown was <span class="hi num">-33.8% of capital</span>, <span class="hi">fully recovered within 26 trades, with zero down years in all five.</span> Every one of those figures is quoted at 4x because that is how the strategy actually trades.</p>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86"></polygon><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"></path></svg>
+      <div class="card-title">Hard stops on every trade</div>
+      <div class="card-sub">Resting at the broker from the moment of entry. Executes even if our systems go dark.</div>
+    </div>
+    <div class="card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <div class="card-title">Flat by 3:55 PM daily</div>
+      <div class="card-sub">Every position closed before the bell; nothing held overnight.</div>
+    </div>
+    <div class="card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      <div class="card-title">Volatility regime gate</div>
+      <div class="card-sub">Stands the slower engine down in disorderly markets.</div>
+    </div>
+    <div class="card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="18"></rect><path d="M16 2v4M8 2v4M3 10h18M10 14l4 4M14 14l-4 4"></path></svg>
+      <div class="card-title">Macro-event blackout</div>
+      <div class="card-sub">CPI, FOMC and NFP days, plus half-day sessions, skipped by rule.</div>
+    </div>
+    <div class="card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="M9 12l2 2 4-4"></path></svg>
+      <div class="card-title">Independent EOD failsafe</div>
+      <div class="card-sub">A watchdog process force-flattens anything still open.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · The Research -->
+<section id="research" aria-labelledby="research-h">
+  <div class="rail">
+    <span class="eyebrow" id="research-h">The Research</span>
+    <span class="tag">Backtest · Hypothetical · Net 0.05% costs</span>
+  </div>
+
+  <div class="poster-row">
+    <div class="poster">
+      <div class="poster-label">5-Year Backtest · Hypothetical</div>
+      <div>
+        <div class="poster-num num">+402%</div>
+        <div class="poster-desc">Five years on a $100k capital account: $100,000 → $502,200 at 4x sizing. Fixed notional, never compounded, net 0.05% costs. Zero down years.</div>
+      </div>
+      <div class="substats">
+        <div><div class="substat-label">Profit factor</div><div class="substat-val">1.59</div></div>
+        <div><div class="substat-label">Win rate</div><div class="substat-val">59.6%</div></div>
+        <div><div class="substat-label">Max DD</div><div class="substat-val">-33.8%</div></div>
+      </div>
+    </div>
+
+    <div class="chartbox">
+      <p class="prose" style="font-size:14.5px;line-height:1.65;margin-bottom:28px">The strategy was validated by an independent clean-room study: a from-scratch reimplementation on the complete 5-year record of Alpaca SIP 1-minute bars (1,255 sessions, ~3.5M bars), reproduced deterministically: identical results on every rerun. <span class="hi">~1,225 configurations</span> were evaluated under a pre-registered protocol; the production configuration sits on broad parameter plateaus, not a curve-fit peak. Costs are grounded in measured live fill data (~0.03% round trip measured; results below use a more conservative 0.05%).</p>
+      <div class="chart-head">
+        <span class="kicker">Account equity · $100k capital · live 4x sizing · backtest</span>
+        <span class="chart-range">Jul 2021 – Jul 2026</span>
+      </div>
+      <div class="plot" id="plotA">
+        <svg viewBox="0 0 1200 440" role="img" aria-label="Backtest account equity at the live 4x sizing: one hundred thousand dollars growing to five hundred two thousand two hundred over five years; maximum drawdown minus 33.8 percent of equity, February to April 2022; yearly figures are in the tables below">
+          <rect x="138.7" y="26" width="37.3" height="370" fill="rgba(243,242,242,.06)"></rect>
+          <line x1="8" y1="379.2" x2="1188" y2="379.2" stroke="rgba(243,242,242,.3)" stroke-width="1"></line>
+          <line x1="8" y1="295.1" x2="1188" y2="295.1" stroke="rgba(243,242,242,.1)" stroke-width="1"></line>
+          <line x1="8" y1="211" x2="1188" y2="211" stroke="rgba(243,242,242,.1)" stroke-width="1"></line>
+          <line x1="8" y1="126.9" x2="1188" y2="126.9" stroke="rgba(243,242,242,.1)" stroke-width="1"></line>
+          <line x1="8" y1="42.8" x2="1188" y2="42.8" stroke="rgba(243,242,242,.1)" stroke-width="1"></line>
+          <text x="1188" y="373.2" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">$100k</text>
+          <text x="1188" y="289.1" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">$200k</text>
+          <text x="1188" y="205" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">$300k</text>
+          <text x="1188" y="120.9" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">$400k</text>
+          <text x="1188" y="36.8" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">$500k</text>
+          <text x="120" y="424" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.45)">2022</text>
+          <text x="344" y="424" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.45)">2023</text>
+          <text x="568" y="424" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.45)">2024</text>
+          <text x="792" y="424" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.45)">2025</text>
+          <text x="1016" y="424" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.45)">2026</text>
+          <path d="M8,379.2 L101.3,375.5 L325.3,227.8 L549.3,156.2 L773.3,101 L997.3,64.7 L1128,41" fill="none" stroke="#2f6bff" stroke-width="3" stroke-linejoin="round"></path>
+          <circle cx="1128" cy="41" r="4.5" fill="#2f6bff"></circle>
+          <text x="1128" y="22" text-anchor="end" font-size="20" font-weight="800" fill="#7fa2ff" style="font-variant-numeric:tabular-nums">$502,200</text>
+          <line x1="176" y1="349" x2="186" y2="349" stroke="rgba(243,242,242,.35)" stroke-width="1"></line>
+          <text x="192" y="345" font-size="15" fill="rgba(243,242,242,.65)">Max drawdown Feb–Apr 2022 · -33.8% of equity</text>
+          <text x="192" y="366" font-size="15" fill="rgba(243,242,242,.65)">lowest equity $85,000 · recovered Jun 2022</text>
+          <g class="crosshair" id="chA" hidden>
+            <line x1="0" y1="26" x2="0" y2="396" stroke="rgba(243,242,242,.35)" stroke-width="1" stroke-dasharray="3 3"></line>
+            <circle cx="0" cy="0" r="5" fill="#2f6bff" stroke="#121110" stroke-width="2"></circle>
+          </g>
+        </svg>
+        <div class="tip" id="tipA" hidden></div>
+      </div>
+      <div class="foot" style="margin-top:10px">$100,000 → $502,200 over five years at the live 4x sizing. Backtest: fixed notional, never compounded; 2026 through Jul 17. Hypothetical; does not represent actual trading.</div>
+
+      <div class="sr-wrap"><table class="sr-table">
+        <caption>Backtest account equity at the live 4x sizing, milestone values</caption>
+        <thead><tr><th scope="col">Date</th><th scope="col">Account equity</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Jul 2021</th><td>$100,000</td></tr>
+          <tr><th scope="row">Dec 2021</th><td>$104,400</td></tr>
+          <tr><th scope="row">Dec 2022</th><td>$280,000</td></tr>
+          <tr><th scope="row">Dec 2023</th><td>$365,200</td></tr>
+          <tr><th scope="row">Dec 2024</th><td>$430,800</td></tr>
+          <tr><th scope="row">Dec 2025</th><td>$474,000</td></tr>
+          <tr><th scope="row">Jul 2026</th><td>$502,200</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:36px">Headline · $100k capital · live 4x sizing · backtest</div>
+  <div class="headline-grid">
+    <div><div class="colhead">Total return on capital</div><div class="headline-val">+402%</div></div>
+    <div><div class="colhead">CAGR</div><div class="headline-val">38.2%</div></div>
+    <div><div class="colhead">Max equity drawdown</div><div class="headline-val">-33.8%</div></div>
+    <div><div class="colhead">Worst trade</div><div class="headline-val">-5.2%</div></div>
+    <div><div class="colhead">Down years</div><div class="headline-val">0</div></div>
+    <div><div class="colhead">Trades</div><div class="headline-val">601</div></div>
+    <div><div class="colhead">Win rate</div><div class="headline-val">59.6%</div></div>
+    <div><div class="colhead">Profit factor</div><div class="headline-val">1.59</div></div>
+  </div>
+  <div class="per-dollar"><span class="colhead">Per dollar of gross exposure</span> &nbsp;+100.6% total · avg win +0.76% / avg loss -0.71% · worst trade -1.30% of notional</div>
+
+  <div class="split">
+    <div>
+      <div class="blockhead">Annualized returns · rolling 12-month windows</div>
+      <div class="tbl">
+        <div class="colhead th">Year</div>
+        <div class="colhead th">Window</div>
+        <div class="colhead th r">On capital (4x)</div>
+        <div class="colhead th r">Per $ exposure</div>
+
+        <div class="td lbl">Year One</div><div class="td win">Jul 2021 – Jul 2022</div><div class="td pri">+61.8%</div><div class="td sec">+15.5%</div>
+        <div class="td lbl">Year Two</div><div class="td win">Jul 2022 – Jul 2023</div><div class="td pri">+193.9%</div><div class="td sec">+48.5%</div>
+        <div class="td lbl">Year Three</div><div class="td win">Jul 2023 – Jul 2024</div><div class="td pri">+57.3%</div><div class="td sec">+14.3%</div>
+        <div class="td lbl">Year Four</div><div class="td win">Jul 2024 – Jul 2025</div><div class="td pri">+64.8%</div><div class="td sec">+16.2%</div>
+        <div class="td lbl last">Year Five</div><div class="td win last">Jul 2025 – Jul 2026</div><div class="td pri last">+24.4%</div><div class="td sec last">+6.1%</div>
+      </div>
+      <div class="foot2" style="margin-top:12px">Positive in all five 12-month windows at the live sizing. The median year (~+65% on capital, ~+16% per dollar of exposure) is the planning figure; 2022-style volatility regimes are the upside case. 0.05% costs; backtest, hypothetical.</div>
+
+      <div class="blockhead blockhead--gap">Annual returns · Year One through Five · on $100k capital at 4x</div>
+      <svg viewBox="0 0 560 264" style="display:block;width:100%;height:auto;font-family:var(--font)" role="img" aria-label="Annual backtest returns on capital at the live 4x sizing, five complete 12-month windows: Year One plus 61.8 percent, Year Two plus 193.9, Year Three plus 57.3, Year Four plus 64.8, Year Five plus 24.4">
+        <line x1="16" y1="216" x2="544" y2="216" stroke="rgba(243,242,242,.35)" stroke-width="1"></line>
+        <rect x="32" y="162.9" width="64" height="53.1" fill="#2f6bff"></rect><text x="64" y="155.9" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+61.8%</text>
+        <rect x="136" y="49.2" width="64" height="166.8" fill="#2f6bff"></rect><text x="168" y="42.2" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+193.9%</text>
+        <rect x="240" y="166.7" width="64" height="49.3" fill="#2f6bff"></rect><text x="272" y="159.7" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+57.3%</text>
+        <rect x="344" y="160.3" width="64" height="55.7" fill="#2f6bff"></rect><text x="376" y="153.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+64.8%</text>
+        <rect x="448" y="195" width="64" height="21" fill="#2f6bff"></rect><text x="480" y="188" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+24.4%</text>
+        <text x="64" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year One</text><text x="64" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '21–Jul '22</text>
+        <text x="168" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year Two</text><text x="168" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '22–Jul '23</text>
+        <text x="272" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year Three</text><text x="272" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '23–Jul '24</text>
+        <text x="376" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year Four</text><text x="376" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '24–Jul '25</text>
+        <text x="480" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year Five</text><text x="480" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '25–Jul '26</text>
+      </svg>
+      <div class="foot2" style="margin-top:10px">Each bar is a complete 12-month period; Year Five ends at the last day of backtest data (Jul 17, 2026). Positive in all five years at the live sizing. Backtest: hypothetical, net 0.05% costs.</div>
+    </div>
+
+    <div>
+      <div class="blockhead">If compounded · $100k left in for all five years</div>
+      <svg viewBox="0 0 560 264" style="display:block;width:100%;height:auto;font-family:var(--font)" role="img" aria-label="Illustrative compounding: one hundred thousand dollars grown through the five annual backtest returns reaches roughly 1.53 million dollars by the end of Year Five">
+        <line x1="16" y1="216" x2="544" y2="216" stroke="rgba(243,242,242,.35)" stroke-width="1"></line>
+        <rect x="24" y="205.2" width="56" height="10.8" fill="rgba(243,242,242,.25)"></rect><text x="52" y="198.2" text-anchor="middle" font-size="12" font-weight="700" fill="rgba(243,242,242,.65)" style="font-variant-numeric:tabular-nums">$100k</text>
+        <rect x="112" y="198.5" width="56" height="17.5" fill="#2f6bff"></rect><text x="140" y="191.5" text-anchor="middle" font-size="12" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">$162k</text>
+        <rect x="200" y="164.5" width="56" height="51.5" fill="#2f6bff"></rect><text x="228" y="157.5" text-anchor="middle" font-size="12" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">$476k</text>
+        <rect x="288" y="135" width="56" height="81" fill="#2f6bff"></rect><text x="316" y="128" text-anchor="middle" font-size="12" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">$748k</text>
+        <rect x="376" y="82.6" width="56" height="133.4" fill="#2f6bff"></rect><text x="404" y="75.6" text-anchor="middle" font-size="12" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">$1.23M</text>
+        <rect x="464" y="50" width="56" height="166" fill="#2f6bff"></rect><text x="492" y="43" text-anchor="middle" font-size="12" font-weight="700" fill="#7fa2ff" style="font-variant-numeric:tabular-nums">$1.53M</text>
+        <text x="52" y="237" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.5)">Start</text>
+        <text x="140" y="237" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.5)">Year One</text>
+        <text x="228" y="237" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.5)">Year Two</text>
+        <text x="316" y="237" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.5)">Year Three</text>
+        <text x="404" y="237" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.5)">Year Four</text>
+        <text x="492" y="237" text-anchor="middle" font-size="10.5" fill="rgba(243,242,242,.5)">Year Five</text>
+      </svg>
+      <div class="foot2" style="margin-top:12px">Illustrative compounding of the Year One–Five backtest returns: $100,000 scaled with equity each year ends at ~$1.53M. The strategy itself trades fixed notional; compounding, like leverage, is an allocation choice, and leverage application is subject to investor preference. Backtest: hypothetical, net 0.05% costs.</div>
+
+      <div class="sr-wrap"><table class="sr-table">
+        <caption>Illustrative compounding of the Year One to Year Five backtest returns</caption>
+        <thead><tr><th scope="col">Period</th><th scope="col">Value</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Start</th><td>$100k</td></tr>
+          <tr><th scope="row">Year One</th><td>$162k</td></tr>
+          <tr><th scope="row">Year Two</th><td>$476k</td></tr>
+          <tr><th scope="row">Year Three</th><td>$748k</td></tr>
+          <tr><th scope="row">Year Four</th><td>$1.23M</td></tr>
+          <tr><th scope="row">Year Five</th><td>$1.53M</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div style="margin-top:56px">
+    <div class="blockhead" style="margin-bottom:20px">Methodology</div>
+    <div class="method">
+      <div class="mcard"><div class="idx">01</div><div class="mt">Canonical data</div><div class="ms">Full consolidated-tape (SIP) 1-minute bars, 2021–2026, audited for calendar, DST, splits, and gaps; complete NYSE session coverage.</div></div>
+      <div class="mcard"><div class="idx">02</div><div class="mt">Deterministic replication</div><div class="ms">Clean-room engine reproduced the production system trade-for-trade; every headline run hashes identically on repeat execution.</div></div>
+      <div class="mcard"><div class="idx">03</div><div class="mt">Pre-registered experiments</div><div class="ms">Ablations, parameter surfaces, and acceptance rules fixed before results were computed; ~1,225 configurations logged in a testing registry.</div></div>
+      <div class="mcard"><div class="idx">04</div><div class="mt">Placebo controls</div><div class="ms">The strategy beat 100% of 400 matched random-day and direction-flip placebos; inverting its logic loses -119%; the edge is signal, not market drift.</div></div>
+      <div class="mcard"><div class="idx">05</div><div class="mt">Walk-forward validation</div><div class="ms">Expanding-window out-of-sample testing across 2022–2026; the production parameters were re-selected in every window: a stability plateau, not a lucky point.</div></div>
+      <div class="mcard"><div class="idx">06</div><div class="mt">Robustness</div><div class="ms">Block-bootstrap 5th percentile still +92%; results survive delayed entries, missed fills, ±10% parameter perturbation, and 3x the measured trading costs.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Live Verification -->
+<section id="live" aria-labelledby="live-h">
+  <div class="rail rail--tight">
+    <span class="eyebrow" id="live-h">Live Verification</span>
+    <span class="tag tag--blue">Paper trading · not actual capital</span>
+  </div>
+  <div class="asof">Data as of <span data-live="asOf">August 18, 2026</span> · updates automatically as new sessions close.</div>
+  <p class="lead">Research is a claim; live performance is evidence. On July 20, 2026 the v1.1 configuration went live in a clean paper-trading account executing against real-time market data, at the production sizing: $400,000 of gross exposure per trade on a $100,000 capital base. Every figure below reconciles to broker records and updates automatically as new sessions close.</p>
+
+  <div class="strip strip--live">
+    <div class="tile">
+      <span class="micro">Total return</span>
+      <span class="stat-val val-blue" data-live="total">+11.37%</span>
+      <span class="stat-note">first <span data-live="days">29</span> days, paper trading</span>
+    </div>
+    <div class="tile">
+      <span class="micro">Trades · win rate</span>
+      <span class="stat-val" data-live="tradesWin">11 · 63.6%</span>
+      <span class="stat-note">one entry per session, max</span>
+    </div>
+    <div class="tile">
+      <span class="micro">Profit factor</span>
+      <span class="stat-val" data-live="pf">3.80</span>
+      <span class="stat-note">gross wins / gross losses</span>
+    </div>
+    <div class="tile">
+      <span class="micro">Max drawdown</span>
+      <span class="stat-val" data-live="dd">-1.73%</span>
+      <span class="stat-note">peak-to-trough on equity</span>
+    </div>
+    <div class="tile">
+      <span class="micro">Payoff ratio</span>
+      <span class="stat-val" data-live="payoff">2.17</span>
+      <span class="stat-note">avg win / avg loss</span>
+    </div>
+    <div class="tile">
+      <span class="micro">Sessions traded</span>
+      <span class="stat-val" data-live="sessions">11 / 21</span>
+      <span class="stat-note">sits out sessions by rule</span>
+    </div>
+  </div>
+
+  <div class="livebox">
+    <div class="chart-head" style="margin-bottom:16px">
+      <span class="kicker">Running equity · $100,000 base · paper trading</span>
+      <span class="chart-range">since Jul 20, 2026</span>
+    </div>
+    <div class="plot" id="plotL">
+      <svg viewBox="0 0 1200 440" role="img" aria-label="Live paper-trading equity curve from one hundred thousand dollars; every underlying trade is in the ledger table below">
+        <line id="g0" x1="8" y1="0" x2="1188" y2="0" stroke="rgba(243,242,242,.22)" stroke-width="1"></line>
+        <line id="g1" x1="8" y1="0" x2="1188" y2="0" stroke="rgba(243,242,242,.1)" stroke-width="1"></line>
+        <line id="g2" x1="8" y1="0" x2="1188" y2="0" stroke="rgba(243,242,242,.1)" stroke-width="1"></line>
+        <text id="g0t" x="1188" y="0" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums"></text>
+        <text id="g1t" x="1188" y="0" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums"></text>
+        <text id="g2t" x="1188" y="0" text-anchor="end" font-size="10" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums"></text>
+        <path id="livePath" d="" fill="none" stroke="#2f6bff" stroke-width="3" stroke-linejoin="round"></path>
+        <circle id="endDot" cx="0" cy="0" r="4.5" fill="#2f6bff"></circle>
+        <text id="endLabel" x="0" y="0" text-anchor="end" font-size="20" font-weight="800" fill="#7fa2ff" style="font-variant-numeric:tabular-nums"></text>
+        <g class="crosshair" id="chL" hidden>
+          <line x1="0" y1="26" x2="0" y2="396" stroke="rgba(243,242,242,.35)" stroke-width="1" stroke-dasharray="3 3"></line>
+          <circle cx="0" cy="0" r="5" fill="#2f6bff" stroke="#121110" stroke-width="2"></circle>
+        </g>
+      </svg>
+      <div class="tip" id="tipL" hidden></div>
+    </div>
+    <div class="date-row" id="dateRow"></div>
+  </div>
+
+  <div class="live-split">
+    <div>
+      <div class="ledger-head">
+        <span class="kicker">Trade ledger · most recent first</span>
+        <span style="font-size:10px;color:rgba(243,242,242,.4)">reconciles to broker records</span>
+      </div>
+      <div class="ledger-scroll">
+        <div class="ledger" id="ledger">
+          <div class="colhead th">Date</div>
+          <div class="colhead th">Symbol</div>
+          <div class="colhead th">Side</div>
+          <div class="colhead th r">Gross exposure</div>
+          <div class="colhead th r">P&amp;L</div>
+          <div class="colhead th r">Ret. on capital</div>
+        </div>
+      </div>
+      <div class="foot" style="margin-top:10px">SPXL = 3x long S&amp;P 500 · SPXS = 3x short. Paper-trading results do not reflect actual capital at risk.</div>
+    </div>
+
+    <div class="honesty">
+      <div class="honesty-h">A young sample: read before annualizing</div>
+      <p>11 trades is a young sample. Annualized ratios (Sharpe 5.0, Calmar 166) are arithmetically correct and not yet statistically meaningful; 30–50 trades are needed before they stabilize. One trade (07-24) accounts for 39% of period P&amp;L; excluding it, the period return is +6.96%.</p>
+      <p>We publish these caveats because we hold this track record to the same standard we'd want as investors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8+9 · Footer / Contact + disclosure -->
+<section id="contact" aria-label="Contact and disclosure">
+  <div class="foot-rail">
+    <span class="foot-brand">Stradella Partners</span>
+    <span class="foot-meta">© 2026 Stradella Partners · paper-trading data updates automatically as sessions close</span>
+  </div>
+  <p class="disclosure">This material is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security. Backtested performance is hypothetical, does not represent actual trading, and was prepared with the benefit of hindsight; paper-trading results do not reflect actual capital at risk, and live results may differ materially due to execution, liquidity, and fees. Past performance, whether actual, simulated, or paper-traded, is not indicative of future results. An investment in any strategy involves risk, including possible loss of principal. Leverage amplifies both gains and losses.</p>
+</section>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     Preview ribbon toggle. Default ON.
+     ============================================================ */
+  var SHOW_RIBBON = true;
+
+  var ribbon = document.getElementById('ribbon');
+  if (ribbon) ribbon.hidden = !SHOW_RIBBON;
+
+  /* ============================================================
+     Embedded fallback data (step 1 of the live-data contract).
+     Identical values to ./data/performance.json.
+     No credentials; the page never contacts a broker directly.
+     ============================================================ */
+  var PERFORMANCE_DATA = (function () {
+    var T = [
+      ['2026-07-20', 'SPXS', 'SHORT', 399987, 2381.76, 2.38],
+      ['2026-07-21', 'SPXL', 'LONG', 400058, -533.67, -0.53],
+      ['2026-07-24', 'SPXS', 'SHORT', 399987, 4410.56, 4.41],
+      ['2026-07-27', 'SPXS', 'SHORT', 399903, -1614.31, -1.61],
+      ['2026-07-30', 'SPXL', 'LONG', 399913, 2175.44, 2.18],
+      ['2026-07-31', 'SPXL', 'LONG', 400063, 3464.36, 3.46],
+      ['2026-08-03', 'SPXL', 'LONG', 399964, 953.17, 0.95],
+      ['2026-08-04', 'SPXL', 'LONG', 400192, -270.40, -0.27],
+      ['2026-08-11', 'SPXL', 'LONG', 399758, -1645.60, -1.65],
+      ['2026-08-13', 'SPXL', 'LONG', 399800, 1065.60, 1.07],
+      ['2026-08-14', 'SPXL', 'LONG', 399799, 984.56, 0.98]
+    ].map(function (a) {
+      return {
+        date: a[0], symbol: a[1], side: a[2],
+        gross_exposure: a[3], pnl: a[4], ret_on_capital_pct: a[5]
+      };
+    });
+    var cum = 100000;
+    return {
+      as_of: '2026-08-18',
+      capital_base: 100000,
+      ending_capital: 111371.47,
+      total_return_pct: 11.37,
+      max_drawdown_pct: -1.73,
+      profit_factor: 3.80,
+      win_rate_pct: 63.6,
+      sessions_traded: 11,
+      sessions_total: 21,
+      equity_curve: T.map(function (t) {
+        cum += t.pnl;
+        return { date: t.date, equity: +cum.toFixed(2) };
+      }),
+      trades: T
+    };
+  })();
+
+  /* ============================================================
+     Formatting helpers
+     ============================================================ */
+  var MON = {
+    '01': 'Jan', '02': 'Feb', '03': 'Mar', '04': 'Apr', '05': 'May', '06': 'Jun',
+    '07': 'Jul', '08': 'Aug', '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec'
+  };
+  function fmtD(iso) { return MON[iso.slice(5, 7)] + ' ' + parseInt(iso.slice(8, 10), 10); }
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function sign(v) { return (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }
+
+  function setText(key, value) {
+    var nodes = document.querySelectorAll('[data-live="' + key + '"]');
+    for (var i = 0; i < nodes.length; i++) nodes[i].textContent = value;
+  }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  /* ============================================================
+     Backtest chart points (geometry copied verbatim from the
+     approved design; never recomputed).
+     ============================================================ */
+  var BT = [
+    { x: 8, y: 379.2, label: 'Jul 2021', val: '$100,000' },
+    { x: 101.3, y: 375.5, label: 'Dec 2021', val: '$104,400' },
+    { x: 325.3, y: 227.8, label: 'Dec 2022', val: '$280,000' },
+    { x: 549.3, y: 156.2, label: 'Dec 2023', val: '$365,200' },
+    { x: 773.3, y: 101, label: 'Dec 2024', val: '$430,800' },
+    { x: 997.3, y: 64.7, label: 'Dec 2025', val: '$474,000' },
+    { x: 1128, y: 41, label: 'Jul 2026', val: '$502,200' }
+  ];
+
+  /* ============================================================
+     Crosshair tooltip wiring (both charts)
+     ============================================================ */
+  function nearestIndex(evt, pts) {
+    var r = evt.currentTarget.getBoundingClientRect();
+    if (!r.width) return 0;
+    var px = (evt.clientX - r.left) / r.width * 1200;
+    var bi = 0, bd = Infinity;
+    for (var i = 0; i < pts.length; i++) {
+      var dd = Math.abs(pts[i].x - px);
+      if (dd < bd) { bd = dd; bi = i; }
+    }
+    return bi;
+  }
+
+  function attachCrosshair(plotId, groupId, tipId, getPoints) {
+    var plot = document.getElementById(plotId);
+    if (!plot) return;
+    var svg = plot.querySelector('svg');
+    var group = document.getElementById(groupId);
+    var line = group.querySelector('line');
+    var dot = group.querySelector('circle');
+    var tip = document.getElementById(tipId);
+
+    function show(evt) {
+      var pts = getPoints();
+      if (!pts || !pts.length) return;
+      var p = pts[nearestIndex(evt, pts)];
+      line.setAttribute('x1', p.x);
+      line.setAttribute('x2', p.x);
+      dot.setAttribute('cx', p.x);
+      dot.setAttribute('cy', p.y);
+      group.hidden = false;
+      tip.textContent = p.label + ' · ' + p.val;
+      tip.style.left = (p.x / 1200 * 100) + '%';
+      tip.style.top = (p.y / 440 * 100) + '%';
+      tip.hidden = false;
+    }
+    function hide() {
+      group.hidden = true;
+      tip.hidden = true;
+    }
+
+    svg.addEventListener('mousemove', show);
+    svg.addEventListener('mouseleave', hide);
+    svg.addEventListener('blur', hide);
+  }
+
+  /* ============================================================
+     Live section render (step 1 + step 2 of the contract)
+     ============================================================ */
+  var LP = [];
+
+  function renderLive(d) {
+    /* --- derived scalars --- */
+    var wins = d.trades.filter(function (t) { return t.pnl > 0; });
+    var losses = d.trades.filter(function (t) { return t.pnl < 0; });
+    var avgW = wins.length
+      ? wins.reduce(function (s, t) { return s + t.pnl; }, 0) / wins.length : 0;
+    var avgL = losses.length
+      ? Math.abs(losses.reduce(function (s, t) { return s + t.pnl; }, 0) / losses.length) : 0;
+    var payoff = avgL ? avgW / avgL : 0;
+    var days = Math.round(
+      (Date.parse(d.as_of) - Date.parse(d.equity_curve[0].date)) / 864e5
+    );
+
+    setText('asOf', new Date(d.as_of + 'T12:00:00').toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    }));
+    setText('days', String(days));
+    setText('total', sign(d.total_return_pct));
+    setText('totalShort', (d.total_return_pct >= 0 ? '+' : '') + d.total_return_pct.toFixed(1) + '%');
+    setText('tradesWin', d.trades.length + ' · ' + d.win_rate_pct.toFixed(1) + '%');
+    setText('pf', d.profit_factor.toFixed(2));
+    setText('dd', d.max_drawdown_pct.toFixed(2) + '%');
+    setText('payoff', payoff.toFixed(2));
+    setText('sessions', d.sessions_traded + ' / ' + d.sessions_total);
+
+    /* --- equity chart geometry --- */
+    var curve = [{ date: 'start', equity: d.capital_base }].concat(d.equity_curve);
+    var eq = curve.map(function (p) { return p.equity; });
+    var lo = Math.min.apply(null, eq), hi = Math.max.apply(null, eq);
+    var pad = Math.max((hi - lo) * 0.12, 500);
+    var yOf = function (v) { return 396 - (v - (lo - pad)) / ((hi + pad) - (lo - pad)) * 370; };
+    var n = curve.length;
+
+    LP = curve.map(function (p, i) {
+      return {
+        x: +(8 + i * (1120 / (n - 1))).toFixed(1),
+        y: +yOf(p.equity).toFixed(1),
+        label: p.date === 'start' ? 'Start · Jul 20' : fmtD(p.date),
+        val: money(p.equity)
+      };
+    });
+
+    document.getElementById('livePath').setAttribute(
+      'd',
+      LP.map(function (p, i) { return (i ? 'L' : 'M') + p.x + ',' + p.y; }).join(' ')
+    );
+
+    var step = Math.max(5000, Math.ceil((hi - lo) / 3 / 5000) * 5000);
+    var base = Math.ceil((lo - pad) / step) * step;
+    var glv = [base, base + step, base + 2 * step];
+    glv.forEach(function (v, i) {
+      var y = +yOf(v).toFixed(1);
+      var ln = document.getElementById('g' + i);
+      var tx = document.getElementById('g' + i + 't');
+      ln.setAttribute('y1', y);
+      ln.setAttribute('y2', y);
+      tx.setAttribute('y', y - 6);
+      tx.textContent = '$' + (v / 1000) + 'k';
+    });
+
+    var last = LP[LP.length - 1];
+    var dot = document.getElementById('endDot');
+    dot.setAttribute('cx', last.x);
+    dot.setAttribute('cy', last.y);
+    var lbl = document.getElementById('endLabel');
+    lbl.setAttribute('x', last.x + 4);
+    lbl.setAttribute('y', Math.max(last.y - 16, 20));
+    lbl.textContent = money(d.ending_capital);
+
+    /* --- date labels under the plot --- */
+    var row = document.getElementById('dateRow');
+    row.textContent = '';
+    curve.forEach(function (p) {
+      row.appendChild(el('span', null, p.date === 'start' ? 'start' : p.date.slice(5)));
+    });
+
+    /* --- ledger, newest first --- */
+    var ledger = document.getElementById('ledger');
+    while (ledger.children.length > 6) ledger.removeChild(ledger.lastChild);
+
+    d.trades.slice().reverse().forEach(function (t) {
+      var isShort = t.side === 'SHORT';
+      var color = t.pnl >= 0 ? '#7fa2ff' : 'rgba(243,242,242,.55)';
+
+      ledger.appendChild(el('div', 'td', fmtD(t.date)));
+      ledger.appendChild(el('div', 'td', t.symbol));
+
+      var sideCell = el('div', 'td');
+      var tag = el('span', 'side-tag', isShort ? 'Short' : 'Long');
+      tag.style.color = isShort ? '#7fa2ff' : 'rgba(243,242,242,.85)';
+      sideCell.appendChild(tag);
+      ledger.appendChild(sideCell);
+
+      ledger.appendChild(el('div', 'td gross', '$' + t.gross_exposure.toLocaleString('en-US')));
+
+      var pnlCell = el('div', 'td pnl',
+        (t.pnl >= 0 ? '+$' : '-$') + Math.abs(t.pnl).toLocaleString('en-US', {
+          minimumFractionDigits: 2, maximumFractionDigits: 2
+        }));
+      pnlCell.style.color = color;
+      ledger.appendChild(pnlCell);
+
+      var retCell = el('div', 'td r',
+        (t.ret_on_capital_pct >= 0 ? '+' : '') + t.ret_on_capital_pct.toFixed(2) + '%');
+      retCell.style.color = color;
+      ledger.appendChild(retCell);
+    });
+  }
+
+  /* ============================================================
+     Boot: render embedded data immediately, then try the file.
+     Any failure keeps the embedded data. No error UI.
+     ============================================================ */
+  renderLive(PERFORMANCE_DATA);
+
+  attachCrosshair('plotA', 'chA', 'tipA', function () { return BT; });
+  attachCrosshair('plotL', 'chL', 'tipL', function () { return LP; });
+
+  try {
+    fetch('./data/performance.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.equity_curve && d.equity_curve.length && d.trades && d.trades.length) {
+          renderLive(d);
+        }
+      })
+      .catch(function () { /* silent: embedded data stands */ });
+  } catch (e) { /* silent */ }
+})();
+</script>
+
+</body>
+</html>
