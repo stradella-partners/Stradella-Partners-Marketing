@@ -269,6 +269,57 @@ h2{
 }
 .tip[hidden],.crosshair[hidden]{display:none}
 
+/* ---- Year Two outlier annotation (bar chart) ---- */
+.barwrap{position:relative}
+
+/* Affordance: dashed ring + "i" marker on the outlier bar.
+   Idle state is deliberately quiet; it brightens on hover/focus. */
+.y2g{cursor:help}
+.y2g .y2ring,.y2g .y2dot,.y2g .y2i{opacity:.55;transition:opacity .12s linear}
+.y2g:hover .y2ring,.y2g:focus-visible .y2ring,
+.y2g:hover .y2dot,.y2g:focus-visible .y2dot,
+.y2g:hover .y2i,.y2g:focus-visible .y2i{opacity:1}
+.y2g:hover .y2bar,.y2g:focus-visible .y2bar{fill:var(--accent-hover)}
+.y2g:focus{outline:none}
+.y2g:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Panel. Flush-left text, zero radius, hairline rule + blue top edge
+   to match the honesty-box treatment elsewhere on the page. */
+.y2tip{
+  position:absolute;left:0;right:0;top:0;
+  background:var(--ground);
+  border:1px solid var(--blue-border);
+  border-top:3px solid var(--accent);
+  padding:16px 18px 17px;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  z-index:6;
+  opacity:0;visibility:hidden;transition:opacity .12s linear,visibility .12s linear;
+}
+.barwrap:hover .y2tip,
+.y2g:focus-visible ~ .y2tip,
+.y2tip.is-open{opacity:1;visibility:visible}
+.y2tip-h{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-light);margin-bottom:9px;font-variant-numeric:tabular-nums;
+}
+.y2tip-b{
+  margin:0;font-size:13px;line-height:1.62;color:var(--body);
+  text-wrap:pretty;
+}
+
+/* Persistent cue so the interaction is discoverable without hovering. */
+.y2hint{
+  display:flex;align-items:center;gap:8px;margin-top:11px;
+  font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--foot);
+}
+.y2hint-m{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:15px;height:15px;flex:none;
+  border:1px solid var(--blue-border);background:var(--blue-tint);
+  color:var(--accent-light);font-size:9.5px;font-weight:800;letter-spacing:0;
+}
+
 /* Accessible data tables paired with charts.
    Visually hidden but exposed to assistive tech; must not
    contribute scroll width (left:-9999px would widen the page). */
@@ -492,6 +543,14 @@ h2{
   .tbl .td.sec{grid-column:2;padding-bottom:12px;border-bottom:1px solid var(--row2)}
   .date-row{padding-right:0}
   .date-row span:nth-child(even){display:none}
+  /* Touch: no hover, so the note sits open as static copy */
+  .y2tip{
+    position:static;opacity:1;visibility:visible;
+    box-shadow:none;margin-top:14px;padding:14px 15px 15px;
+  }
+  .y2hint{display:none}
+  .y2g{cursor:default}
+  .y2g .y2ring,.y2g .y2dot,.y2g .y2i{opacity:1}
   .rail{margin-bottom:28px}
   .strip{margin-top:40px}
 }
@@ -562,6 +621,18 @@ h2{
   svg rect[fill^="rgba(243,242,242,.25)"]{fill:#ccc}
 
   .crosshair,.tip{display:none !important}
+
+  /* Outlier note prints as static body copy under the chart */
+  .y2tip{
+    position:static;opacity:1;visibility:visible;
+    border:1px solid #bbb;border-top:2pt solid #1746b8;
+    box-shadow:none;margin:10pt 0 0;padding:9pt 10pt;
+    break-inside:avoid;
+  }
+  .y2tip-h{color:#1746b8}
+  .y2tip-b{color:#333;font-size:9.5pt}
+  .y2hint{display:none}
+  .y2g .y2ring,.y2g .y2dot,.y2g .y2i{display:none}
 
   /* chart data tables become visible in print (no hover available) */
   .sr-wrap{
@@ -822,10 +893,17 @@ h2{
       <div class="foot2" style="margin-top:12px">Positive in all five 12-month windows at the live sizing. The median year (~+65% on capital, ~+16% per dollar of exposure) is the planning figure; 2022-style volatility regimes are the upside case. 0.05% costs; backtest, hypothetical.</div>
 
       <div class="blockhead blockhead--gap">Annual returns · Year One through Five · on $100k capital at 4x</div>
+      <div class="barwrap">
       <svg viewBox="0 0 560 264" style="display:block;width:100%;height:auto;font-family:var(--font)" role="img" aria-label="Annual backtest returns on capital at the live 4x sizing, five complete 12-month windows: Year One plus 61.8 percent, Year Two plus 193.9, Year Three plus 57.3, Year Four plus 64.8, Year Five plus 24.4">
         <line x1="16" y1="216" x2="544" y2="216" stroke="rgba(243,242,242,.35)" stroke-width="1"></line>
         <rect x="32" y="162.9" width="64" height="53.1" fill="#2f6bff"></rect><text x="64" y="155.9" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+61.8%</text>
-        <rect x="136" y="49.2" width="64" height="166.8" fill="#2f6bff"></rect><text x="168" y="42.2" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+193.9%</text>
+        <g id="y2g" class="y2g" tabindex="0" role="button" aria-describedby="y2note" aria-label="Year Two, plus 193.9 percent. Outlier year: hover or activate for an explanation.">
+          <rect x="136" y="49.2" width="64" height="166.8" fill="#2f6bff" class="y2bar"></rect>
+          <rect x="136" y="49.2" width="64" height="166.8" fill="none" stroke="#7fa2ff" stroke-width="1.5" stroke-dasharray="4 3" class="y2ring"></rect>
+          <text x="168" y="42.2" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+193.9%</text>
+          <circle cx="196.5" cy="60" r="8.5" fill="rgba(47,107,255,.12)" stroke="#7fa2ff" stroke-width="1.2" class="y2dot"></circle>
+          <text x="196.5" y="63.8" text-anchor="middle" font-size="11" font-weight="800" fill="#7fa2ff" class="y2i">i</text>
+        </g>
         <rect x="240" y="166.7" width="64" height="49.3" fill="#2f6bff"></rect><text x="272" y="159.7" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+57.3%</text>
         <rect x="344" y="160.3" width="64" height="55.7" fill="#2f6bff"></rect><text x="376" y="153.3" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+64.8%</text>
         <rect x="448" y="195" width="64" height="21" fill="#2f6bff"></rect><text x="480" y="188" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f3f2f2" style="font-variant-numeric:tabular-nums">+24.4%</text>
@@ -835,6 +913,12 @@ h2{
         <text x="376" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year Four</text><text x="376" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '24–Jul '25</text>
         <text x="480" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(243,242,242,.65)">Year Five</text><text x="480" y="253" text-anchor="middle" font-size="9.5" fill="rgba(243,242,242,.4)" style="font-variant-numeric:tabular-nums">Jul '25–Jul '26</text>
       </svg>
+        <div id="y2note" class="y2tip" role="tooltip">
+          <div class="y2tip-h">Year Two · +193.9% · the outlier</div>
+          <p class="y2tip-b">Year Two captured the back half of the 2022 bear market, the single best environment for this strategy: large morning moves and strong afternoon follow-through occurred two to three times more often than in a normal year, generating roughly 40% more trades at a steady win rate. Because the strategy shorts as readily as it buys, the down-trending days were fully tradeable, making 2022-style volatility the upside case while the median year remains the planning number.</p>
+        </div>
+      </div>
+      <div class="y2hint"><span class="y2hint-m">i</span><span>Hover Year Two for why this year is an outlier</span></div>
       <div class="foot2" style="margin-top:10px">Each bar is a complete 12-month period; Year Five ends at the last day of backtest data (Jul 17, 2026). Positive in all five years at the live sizing. Backtest: hypothetical, net 0.05% costs.</div>
     </div>
 
@@ -1252,6 +1336,45 @@ h2{
 
   attachCrosshair('plotA', 'chA', 'tipA', function () { return BT; });
   attachCrosshair('plotL', 'chL', 'tipL', function () { return LP; });
+
+  /* ------------------------------------------------------------
+     Year Two outlier note.
+     Hover/focus is handled in CSS so it works with JS disabled.
+     This adds click/tap toggling and Escape to dismiss.
+     ------------------------------------------------------------ */
+  (function () {
+    var g = document.getElementById('y2g');
+    var note = document.getElementById('y2note');
+    if (!g || !note) return;
+
+    function open(v) {
+      if (v) { note.classList.add('is-open'); }
+      else { note.classList.remove('is-open'); }
+      g.setAttribute('aria-expanded', v ? 'true' : 'false');
+    }
+
+    g.setAttribute('aria-expanded', 'false');
+
+    g.addEventListener('click', function (e) {
+      e.preventDefault();
+      open(!note.classList.contains('is-open'));
+    });
+
+    g.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        open(!note.classList.contains('is-open'));
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') open(false);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!g.contains(e.target) && !note.contains(e.target)) open(false);
+    });
+  })();
 
   try {
     fetch('./data/performance.json', { cache: 'no-store' })
