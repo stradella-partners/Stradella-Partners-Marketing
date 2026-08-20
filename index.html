@@ -654,7 +654,7 @@ h2{
       <span class="tile-val"><b>Zero</b><span class="tile-note">2021–2026 backtest, all cost scenarios ≤0.05%</span></span>
     </div>
     <div class="tile">
-      <span class="micro">Live Paper · first <span data-live="days">29</span> days</span>
+      <span class="micro">Live Paper · first <span data-live="days">31</span> days</span>
       <span class="tile-val"><b class="val-blue" data-live="totalShort">+11.4%</b><span class="tile-note">on $100k capital base, 4x intraday margin</span></span>
     </div>
     <div class="tile">
@@ -919,23 +919,23 @@ h2{
     <span class="eyebrow" id="live-h">Live Verification</span>
     <span class="tag tag--blue">Paper trading · not actual capital</span>
   </div>
-  <div class="asof">Data as of <span data-live="asOf">August 19, 2026</span> · updates automatically as new sessions close.</div>
+  <div class="asof">Data as of <span data-live="asOf">August 20, 2026</span> · updates automatically as new sessions close.</div>
   <p class="lead">Research is a claim; live performance is evidence. On July 20, 2026 the v1.1 configuration went live in a clean paper-trading account executing against real-time market data, at the production sizing: $400,000 of gross exposure per trade on a $100,000 capital base. Every figure below reconciles to broker records and updates automatically as new sessions close.</p>
 
   <div class="strip strip--live">
     <div class="tile">
       <span class="micro">Total return</span>
-      <span class="stat-val val-blue" data-live="total">+13.18%</span>
-      <span class="stat-note">first <span data-live="days">30</span> days, paper trading</span>
+      <span class="stat-val val-blue" data-live="total">+14.97%</span>
+      <span class="stat-note">first <span data-live="days">31</span> days, paper trading</span>
     </div>
     <div class="tile">
       <span class="micro">Trades · win rate</span>
-      <span class="stat-val" data-live="tradesWin">12 · 66.7%</span>
+      <span class="stat-val" data-live="tradesWin">13 · 69.2%</span>
       <span class="stat-note">one entry per session, max</span>
     </div>
     <div class="tile">
       <span class="micro">Profit factor</span>
-      <span class="stat-val" data-live="pf">4.24</span>
+      <span class="stat-val" data-live="pf">4.68</span>
       <span class="stat-note">gross wins / gross losses</span>
     </div>
     <div class="tile">
@@ -945,12 +945,12 @@ h2{
     </div>
     <div class="tile">
       <span class="micro">Payoff ratio</span>
-      <span class="stat-val" data-live="payoff">2.12</span>
+      <span class="stat-val" data-live="payoff">2.08</span>
       <span class="stat-note">avg win / avg loss</span>
     </div>
     <div class="tile">
       <span class="micro">Sessions traded</span>
-      <span class="stat-val" data-live="sessions">12 / 22</span>
+      <span class="stat-val" data-live="sessions">13 / 23</span>
       <span class="stat-note">sits out sessions by rule</span>
     </div>
   </div>
@@ -1002,7 +1002,7 @@ h2{
 
     <div class="honesty">
       <div class="honesty-h">A young sample: read before annualizing</div>
-      <p>12 trades is a young sample. Annualized ratios (Sharpe 5.0, Calmar 166) are arithmetically correct and not yet statistically meaningful; 30–50 trades are needed before they stabilize. One trade (07-24) accounts for 33% of period P&amp;L; excluding it, the period return is +8.77%.</p>
+      <p>13 trades is a young sample. Annualized ratios (Sharpe 5.0, Calmar 166) are arithmetically correct and not yet statistically meaningful; 30–50 trades are needed before they stabilize. One trade (07-24) accounts for 29% of period P&amp;L; excluding it, the period return is +10.56%.</p>
       <p>We publish these caveats because we hold this track record to the same standard we'd want as investors.</p>
     </div>
   </div>
@@ -1049,7 +1049,8 @@ h2{
       ['2026-08-11', 'SPXL', 'LONG', 399758, -1645.60, -1.65],
       ['2026-08-13', 'SPXL', 'LONG', 399800, 1065.60, 1.07],
       ['2026-08-14', 'SPXL', 'LONG', 399799, 984.56, 0.98],
-      ['2026-08-19', 'SPXS', 'SHORT', 399988, 1807.30, 1.81]
+      ['2026-08-19', 'SPXS', 'SHORT', 399988, 1807.30, 1.81],
+      ['2026-08-20', 'SPXS', 'SHORT', 399997, 1789.98, 1.79]
     ].map(function (a) {
       return {
         date: a[0], symbol: a[1], side: a[2],
@@ -1058,15 +1059,15 @@ h2{
     });
     var cum = 100000;
     return {
-      as_of: '2026-08-19',
+      as_of: '2026-08-20',
       capital_base: 100000,
-      ending_capital: 113178.77,
-      total_return_pct: 13.18,
+      ending_capital: 114968.75,
+      total_return_pct: 14.97,
       max_drawdown_pct: -1.72,
-      profit_factor: 4.24,
-      win_rate_pct: 66.7,
-      sessions_traded: 12,
-      sessions_total: 22,
+      profit_factor: 4.68,
+      win_rate_pct: 69.2,
+      sessions_traded: 13,
+      sessions_total: 23,
       equity_curve: T.map(function (t) {
         cum += t.pnl;
         return { date: t.date, equity: +cum.toFixed(2) };
