@@ -1,13 +1,13 @@
 {
-  "as_of": "2026-08-20",
+  "as_of": "2026-08-21",
   "capital_base": 100000,
-  "ending_capital": 114968.75,
-  "total_return_pct": 14.97,
+  "ending_capital": 113838.39,
+  "total_return_pct": 13.84,
   "max_drawdown_pct": -1.72,
-  "profit_factor": 4.68,
-  "win_rate_pct": 69.2,
-  "sessions_traded": 13,
-  "sessions_total": 23,
+  "profit_factor": 3.66,
+  "win_rate_pct": 64.3,
+  "sessions_traded": 14,
+  "sessions_total": 24,
   "equity_curve": [
     {"date": "2026-07-20", "equity": 102381.76},
     {"date": "2026-07-21", "equity": 101848.09},
@@ -21,7 +21,8 @@
     {"date": "2026-08-13", "equity": 110386.91},
     {"date": "2026-08-14", "equity": 111371.47},
     {"date": "2026-08-19", "equity": 113178.77},
-    {"date": "2026-08-20", "equity": 114968.75}
+    {"date": "2026-08-20", "equity": 114968.75},
+    {"date": "2026-08-21", "equity": 113838.39}
   ],
   "trades": [
     {"date": "2026-07-20", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399987, "pnl": 2381.76, "ret_on_capital_pct": 2.38},
@@ -36,6 +37,7 @@
     {"date": "2026-08-13", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399800, "pnl": 1065.60, "ret_on_capital_pct": 1.07},
     {"date": "2026-08-14", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399799, "pnl": 984.56, "ret_on_capital_pct": 0.98},
     {"date": "2026-08-19", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399988, "pnl": 1807.30, "ret_on_capital_pct": 1.81},
-    {"date": "2026-08-20", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399997, "pnl": 1789.98, "ret_on_capital_pct": 1.79}
+    {"date": "2026-08-20", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399997, "pnl": 1789.98, "ret_on_capital_pct": 1.79},
+    {"date": "2026-08-21", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399986, "pnl": -1130.36, "ret_on_capital_pct": -1.13}
   ]
 }
