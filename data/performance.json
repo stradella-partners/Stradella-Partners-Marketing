@@ -1,47 +1,219 @@
 {
-  "as_of": "2026-08-28",
+  "as_of": "2026-08-31",
   "capital_base": 100000,
-  "ending_capital": 112431.91,
-  "total_return_pct": 12.43,
-  "max_drawdown_pct": -2.37,
-  "profit_factor": 2.83,
-  "win_rate_pct": 62.5,
-  "sessions_traded": 16,
-  "sessions_total": 29,
+  "ending_capital": 110817.41,
+  "total_return_pct": 10.82,
+  "max_drawdown_pct": -4.15,
+  "profit_factor": 2.29,
+  "win_rate_pct": 58.8,
+  "sessions_traded": 17,
+  "sessions_total": 30,
   "equity_curve": [
-    {"date": "2026-07-20", "equity": 102381.76},
-    {"date": "2026-07-21", "equity": 101848.09},
-    {"date": "2026-07-24", "equity": 106258.65},
-    {"date": "2026-07-27", "equity": 104644.34},
-    {"date": "2026-07-30", "equity": 106819.78},
-    {"date": "2026-07-31", "equity": 110284.14},
-    {"date": "2026-08-03", "equity": 111237.31},
-    {"date": "2026-08-04", "equity": 110966.91},
-    {"date": "2026-08-11", "equity": 109321.31},
-    {"date": "2026-08-13", "equity": 110386.91},
-    {"date": "2026-08-14", "equity": 111371.47},
-    {"date": "2026-08-19", "equity": 113178.77},
-    {"date": "2026-08-20", "equity": 114968.75},
-    {"date": "2026-08-21", "equity": 113838.39},
-    {"date": "2026-08-27", "equity": 112249.32},
-    {"date": "2026-08-28", "equity": 112431.91}
+    {
+      "date": "2026-07-20",
+      "equity": 102381.76
+    },
+    {
+      "date": "2026-07-21",
+      "equity": 101848.09
+    },
+    {
+      "date": "2026-07-24",
+      "equity": 106258.65
+    },
+    {
+      "date": "2026-07-27",
+      "equity": 104644.34
+    },
+    {
+      "date": "2026-07-30",
+      "equity": 106819.78
+    },
+    {
+      "date": "2026-07-31",
+      "equity": 110284.14
+    },
+    {
+      "date": "2026-08-03",
+      "equity": 111237.31
+    },
+    {
+      "date": "2026-08-04",
+      "equity": 110966.91
+    },
+    {
+      "date": "2026-08-11",
+      "equity": 109321.31
+    },
+    {
+      "date": "2026-08-13",
+      "equity": 110386.91
+    },
+    {
+      "date": "2026-08-14",
+      "equity": 111371.47
+    },
+    {
+      "date": "2026-08-19",
+      "equity": 113178.77
+    },
+    {
+      "date": "2026-08-20",
+      "equity": 114968.75
+    },
+    {
+      "date": "2026-08-21",
+      "equity": 113838.39
+    },
+    {
+      "date": "2026-08-27",
+      "equity": 112249.32
+    },
+    {
+      "date": "2026-08-28",
+      "equity": 112431.91
+    },
+    {
+      "date": "2026-08-31",
+      "equity": 110817.41
+    }
   ],
   "trades": [
-    {"date": "2026-07-20", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399987, "pnl": 2381.76, "ret_on_capital_pct": 2.38},
-    {"date": "2026-07-21", "symbol": "SPXL", "side": "LONG", "gross_exposure": 400058, "pnl": -533.67, "ret_on_capital_pct": -0.53},
-    {"date": "2026-07-24", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399987, "pnl": 4410.56, "ret_on_capital_pct": 4.41},
-    {"date": "2026-07-27", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399903, "pnl": -1614.31, "ret_on_capital_pct": -1.61},
-    {"date": "2026-07-30", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399913, "pnl": 2175.44, "ret_on_capital_pct": 2.18},
-    {"date": "2026-07-31", "symbol": "SPXL", "side": "LONG", "gross_exposure": 400063, "pnl": 3464.36, "ret_on_capital_pct": 3.46},
-    {"date": "2026-08-03", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399964, "pnl": 953.17, "ret_on_capital_pct": 0.95},
-    {"date": "2026-08-04", "symbol": "SPXL", "side": "LONG", "gross_exposure": 400192, "pnl": -270.4, "ret_on_capital_pct": -0.27},
-    {"date": "2026-08-11", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399758, "pnl": -1645.6, "ret_on_capital_pct": -1.65},
-    {"date": "2026-08-13", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399800, "pnl": 1065.6, "ret_on_capital_pct": 1.07},
-    {"date": "2026-08-14", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399799, "pnl": 984.56, "ret_on_capital_pct": 0.98},
-    {"date": "2026-08-19", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399988, "pnl": 1807.3, "ret_on_capital_pct": 1.81},
-    {"date": "2026-08-20", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399997, "pnl": 1789.98, "ret_on_capital_pct": 1.79},
-    {"date": "2026-08-21", "symbol": "SPXS", "side": "SHORT", "gross_exposure": 399986, "pnl": -1130.36, "ret_on_capital_pct": -1.13},
-    {"date": "2026-08-27", "symbol": "SPXL", "side": "LONG", "gross_exposure": 399814, "pnl": -1589.07, "ret_on_capital_pct": -1.59},
-    {"date": "2026-08-28", "symbol": "SPXL", "side": "LONG", "gross_exposure": 400780, "pnl": 182.59, "ret_on_capital_pct": 0.18}
+    {
+      "date": "2026-07-20",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 399987,
+      "pnl": 2381.76,
+      "ret_on_capital_pct": 2.38
+    },
+    {
+      "date": "2026-07-21",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 400058,
+      "pnl": -533.67,
+      "ret_on_capital_pct": -0.53
+    },
+    {
+      "date": "2026-07-24",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 399987,
+      "pnl": 4410.56,
+      "ret_on_capital_pct": 4.41
+    },
+    {
+      "date": "2026-07-27",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 399903,
+      "pnl": -1614.31,
+      "ret_on_capital_pct": -1.61
+    },
+    {
+      "date": "2026-07-30",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 399913,
+      "pnl": 2175.44,
+      "ret_on_capital_pct": 2.18
+    },
+    {
+      "date": "2026-07-31",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 400063,
+      "pnl": 3464.36,
+      "ret_on_capital_pct": 3.46
+    },
+    {
+      "date": "2026-08-03",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 399964,
+      "pnl": 953.17,
+      "ret_on_capital_pct": 0.95
+    },
+    {
+      "date": "2026-08-04",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 400192,
+      "pnl": -270.4,
+      "ret_on_capital_pct": -0.27
+    },
+    {
+      "date": "2026-08-11",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 399758,
+      "pnl": -1645.6,
+      "ret_on_capital_pct": -1.65
+    },
+    {
+      "date": "2026-08-13",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 399800,
+      "pnl": 1065.6,
+      "ret_on_capital_pct": 1.07
+    },
+    {
+      "date": "2026-08-14",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 399799,
+      "pnl": 984.56,
+      "ret_on_capital_pct": 0.98
+    },
+    {
+      "date": "2026-08-19",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 399988,
+      "pnl": 1807.3,
+      "ret_on_capital_pct": 1.81
+    },
+    {
+      "date": "2026-08-20",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 399997,
+      "pnl": 1789.98,
+      "ret_on_capital_pct": 1.79
+    },
+    {
+      "date": "2026-08-21",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 399986,
+      "pnl": -1130.36,
+      "ret_on_capital_pct": -1.13
+    },
+    {
+      "date": "2026-08-27",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 399814,
+      "pnl": -1589.07,
+      "ret_on_capital_pct": -1.59
+    },
+    {
+      "date": "2026-08-28",
+      "symbol": "SPXL",
+      "side": "LONG",
+      "gross_exposure": 400780,
+      "pnl": 182.59,
+      "ret_on_capital_pct": 0.18
+    },
+    {
+      "date": "2026-08-31",
+      "symbol": "SPXS",
+      "side": "SHORT",
+      "gross_exposure": 400073,
+      "pnl": -1614.5,
+      "ret_on_capital_pct": -1.61
+    }
   ]
 }
