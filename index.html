@@ -654,8 +654,8 @@ h2{
       <span class="tile-val"><b>Zero</b><span class="tile-note">2021–2026 backtest, all cost scenarios ≤0.05%</span></span>
     </div>
     <div class="tile">
-      <span class="micro">Live Paper · first <span data-live="days">42</span> days</span>
-      <span class="tile-val"><b class="val-blue" data-live="totalShort">+10.8%</b><span class="tile-note">on $100k capital base, 4x intraday margin</span></span>
+      <span class="micro">Live Paper · first <span data-live="days">51</span> days</span>
+      <span class="tile-val"><b class="val-blue" data-live="totalShort">+11.5%</b><span class="tile-note">on $100k capital base, 4x intraday margin</span></span>
     </div>
     <div class="tile">
       <span class="micro">Overnight Exposure</span>
@@ -919,38 +919,38 @@ h2{
     <span class="eyebrow" id="live-h">Live Verification</span>
     <span class="tag tag--blue">Paper trading · not actual capital</span>
   </div>
-  <div class="asof">Data as of <span data-live="asOf">August 31, 2026</span> · updates automatically as new sessions close.</div>
+  <div class="asof">Data as of <span data-live="asOf">September 9, 2026</span> · updates automatically as new sessions close.</div>
   <p class="lead">Research is a claim; live performance is evidence. On July 20, 2026 the v1.1 configuration went live in a clean paper-trading account executing against real-time market data, at the production sizing: $400,000 of gross exposure per trade on a $100,000 capital base. Every figure below reconciles to broker records and updates automatically as new sessions close.</p>
 
   <div class="strip strip--live">
     <div class="tile">
       <span class="micro">Total return</span>
-      <span class="stat-val val-blue" data-live="total">+10.82%</span>
-      <span class="stat-note">first <span data-live="days">42</span> days, paper trading</span>
+      <span class="stat-val val-blue" data-live="total">+11.52%</span>
+      <span class="stat-note">first <span data-live="days">51</span> days, paper trading</span>
     </div>
     <div class="tile">
       <span class="micro">Trades · win rate</span>
-      <span class="stat-val" data-live="tradesWin">17 · 58.8%</span>
+      <span class="stat-val" data-live="tradesWin">21 · 57.1%</span>
       <span class="stat-note">one entry per session, max</span>
     </div>
     <div class="tile">
       <span class="micro">Profit factor</span>
-      <span class="stat-val" data-live="pf">2.29</span>
+      <span class="stat-val" data-live="pf">2.16</span>
       <span class="stat-note">gross wins / gross losses</span>
     </div>
     <div class="tile">
       <span class="micro">Max drawdown</span>
-      <span class="stat-val" data-live="dd">-4.15%</span>
+      <span class="stat-val" data-live="dd">-4.97%</span>
       <span class="stat-note">peak-to-trough on equity</span>
     </div>
     <div class="tile">
       <span class="micro">Payoff ratio</span>
-      <span class="stat-val" data-live="payoff">1.60</span>
+      <span class="stat-val" data-live="payoff">1.44</span>
       <span class="stat-note">avg win / avg loss</span>
     </div>
     <div class="tile">
       <span class="micro">Sessions traded</span>
-      <span class="stat-val" data-live="sessions">17 / 30</span>
+      <span class="stat-val" data-live="sessions">21 / 37</span>
       <span class="stat-note">sits out sessions by rule</span>
     </div>
   </div>
@@ -1054,7 +1054,11 @@ h2{
       ['2026-08-21', 'SPXS', 'SHORT', 399986, -1130.36, -1.13],
       ['2026-08-27', 'SPXL', 'LONG', 399814, -1589.07, -1.59],
       ['2026-08-28', 'SPXL', 'LONG', 400780, 182.59, 0.18],
-      ['2026-08-31', 'SPXS', 'SHORT', 400073, -1614.50, -1.61]
+      ['2026-08-31', 'SPXS', 'SHORT', 400073, -1614.50, -1.61],
+      ['2026-09-01', 'SPXL', 'LONG', 399744, -1557.83, -1.56],
+      ['2026-09-02', 'SPXS', 'SHORT', 399977, 0.00, 0.00],
+      ['2026-09-08', 'SPXS', 'SHORT', 399981, 1780.57, 1.78],
+      ['2026-09-09', 'SPXS', 'SHORT', 399990, 477.03, 0.48]
     ].map(function (a) {
       return {
         date: a[0], symbol: a[1], side: a[2],
@@ -1063,15 +1067,15 @@ h2{
     });
     var cum = 100000;
     return {
-      as_of: '2026-08-31',
+      as_of: '2026-09-09',
       capital_base: 100000,
-      ending_capital: 110817.41,
-      total_return_pct: 10.82,
-      max_drawdown_pct: -4.15,
-      profit_factor: 2.29,
-      win_rate_pct: 58.8,
-      sessions_traded: 17,
-      sessions_total: 30,
+      ending_capital: 111517.18,
+      total_return_pct: 11.52,
+      max_drawdown_pct: -4.97,
+      profit_factor: 2.16,
+      win_rate_pct: 57.1,
+      sessions_traded: 21,
+      sessions_total: 37,
       equity_curve: T.map(function (t) {
         cum += t.pnl;
         return { date: t.date, equity: +cum.toFixed(2) };
